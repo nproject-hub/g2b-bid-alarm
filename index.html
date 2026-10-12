@@ -113,62 +113,77 @@
             </div>
         </div>
 
-        <!-- Pricing Section -->
+        <!-- Pricing Section (4 Grid로 확장 & PRO 강조) -->
         <div class="text-center mb-16" id="pricing">
             <h2 class="text-3xl font-bold mb-4 text-gray-900">이용 요금 및 플랜</h2>
             <p class="text-gray-600 mb-10 max-w-2xl mx-auto">단 한 번의 입찰 성공만으로도 수천 배의 ROI(투자수익률)를 가져다줍니다.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
-                <!-- PRO -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 flex flex-col relative overflow-hidden">
-                    <div class="bg-gray-50 border-b border-gray-100 -mx-8 -mt-8 p-8 mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">PRO</h3>
-                        <p class="text-sm font-semibold text-blue-600 mb-4">💰 인건비 완벽 절감 (개인용)</p>
-                        <p class="text-gray-600 text-sm h-10">월 9,900원(커피 두 잔 값)으로 매월 30시간의 막내 사원 단순 검색 업무를 완전히 자동화하세요.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto text-left">
+                <!-- FREE -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col relative overflow-hidden opacity-95">
+                    <div class="bg-gray-50 border-b border-gray-100 -mx-6 -mt-6 p-6 mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">FREE</h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4">🌱 가볍게 체험하기</p>
+                        <p class="text-gray-500 text-sm h-10 leading-tight">결제 전 서비스의 실시간 알림 성능을 비용 없이 직접 체험해 보세요.</p>
                     </div>
-                    <div class="text-4xl font-extrabold text-gray-900 mb-8">9,900원<span class="text-base text-gray-500 font-normal"> /월</span></div>
-                    <ul class="space-y-4 mb-8 text-gray-700 flex-grow text-sm">
-                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드 최대 5개 등록</li>
-                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드별 최대 2개 토큰</li>
-                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>업종 분류 지정</li>
-                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>제외 키워드 사용</li>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-8">0원<span class="text-sm text-gray-500 font-normal"> /월</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-600 flex-grow text-sm">
+                        <li class="flex items-start"><span class="text-gray-400 mr-2">✓</span>키워드 최대 1개 등록</li>
+                        <li class="flex items-start"><span class="text-gray-400 mr-2">✓</span>1일 알림 횟수 제한</li>
+                        <li class="flex items-start"><span class="text-transparent mr-2">✓</span><span class="text-gray-400 line-through">업종 분류 및 제외 키워드</span></li>
                     </ul>
                 </div>
-                
-                <!-- ULTRA -->
-                <div class="bg-blue-600 rounded-2xl shadow-xl border border-blue-600 p-8 relative transform md:-translate-y-4 flex flex-col text-white">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold tracking-wide shadow-sm w-max">가장 많이 선택하는 플랜</div>
+
+                <!-- PRO (강조됨) -->
+                <div class="bg-blue-600 rounded-2xl shadow-xl border border-blue-600 p-6 relative transform lg:-translate-y-4 flex flex-col text-white">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-sm w-max">가장 많이 선택하는 플랜</div>
                     <div class="mt-4 mb-6 border-b border-blue-500 pb-6">
-                        <h3 class="text-2xl font-bold mb-2">ULTRA</h3>
-                        <p class="text-sm font-semibold text-yellow-300 mb-4">🚀 광범위한 모니터링망 구축</p>
-                        <p class="text-blue-100 text-sm h-10">다양한 사업 영역을 가진 중소기업을 위해 15개 핵심 키워드의 빈틈없는 모니터링을 제공합니다.</p>
+                        <h3 class="text-xl font-bold mb-2">PRO</h3>
+                        <p class="text-sm font-semibold text-yellow-300 mb-4">💰 인건비 완벽 절감</p>
+                        <p class="text-blue-100 text-sm h-10 leading-tight">월 9,900원으로 매월 30시간의 막내 사원 단순 검색 업무를 자동화하세요.</p>
                     </div>
-                    <div class="text-4xl font-extrabold mb-8">19,900원<span class="text-base text-blue-200 font-normal"> /월</span></div>
+                    <div class="text-3xl font-extrabold mb-8">9,900원<span class="text-sm text-blue-200 font-normal"> /월</span></div>
                     <ul class="space-y-4 mb-8 flex-grow text-sm">
-                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드 최대 15개 등록</li>
-                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드별 최대 5개 토큰</li>
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드 최대 5개 등록</li>
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드별 최대 2개 토큰</li>
                         <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>업종 분류 지정</li>
                         <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>제외 키워드 사용</li>
                     </ul>
                 </div>
                 
-                <!-- BUSINESS -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 flex flex-col relative overflow-hidden">
-                    <div class="bg-gray-50 border-b border-gray-100 -mx-8 -mt-8 p-8 mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">BUSINESS</h3>
-                        <p class="text-sm font-semibold text-indigo-600 mb-4">🏢 영업팀 파이프라인 자동화</p>
-                        <p class="text-gray-600 text-sm h-10">연간 2,000만 원 상당의 외주 모니터링 인력 대체 효과! 메신저 연동으로 즉각 대응하세요.</p>
+                <!-- ULTRA (기본 스타일로 변경) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col relative overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-100 -mx-6 -mt-6 p-6 mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">ULTRA</h3>
+                        <p class="text-sm font-semibold text-blue-600 mb-4">🚀 광범위한 모니터링망</p>
+                        <p class="text-gray-600 text-sm h-10 leading-tight">다양한 사업 영역을 가진 중소기업을 위해 15개 핵심 키워드를 제공합니다.</p>
                     </div>
-                    <div class="text-4xl font-extrabold text-gray-900 mb-8">99,900원<span class="text-base text-gray-500 font-normal"> /월</span></div>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-8">19,900원<span class="text-sm text-gray-500 font-normal"> /월</span></div>
                     <ul class="space-y-4 mb-8 text-gray-700 flex-grow text-sm">
-                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>ULTRA의 모든 기능 포함</li>
-                        <li class="flex items-start"><span class="text-indigo-500 font-bold mr-2">✓</span>사내 슬랙/메신저 연동 지원</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드 최대 15개 등록</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드별 최대 5개 토큰</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>업종 분류 지정</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>제외 키워드 사용</li>
+                    </ul>
+                </div>
+                
+                <!-- BUSINESS -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col relative overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-100 -mx-6 -mt-6 p-6 mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">BUSINESS</h3>
+                        <p class="text-sm font-semibold text-indigo-600 mb-4">🏢 영업팀 파이프라인</p>
+                        <p class="text-gray-600 text-sm h-10 leading-tight">연간 2천만 원 외주 인력 대체! 메신저 연동으로 즉각 대응하세요.</p>
+                    </div>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-8">99,900원<span class="text-sm text-gray-500 font-normal"> /월</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-700 flex-grow text-sm">
+                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>ULTRA의 모든 기능</li>
+                        <li class="flex items-start"><span class="text-indigo-500 font-bold mr-2">✓</span>슬랙/잔디 메신저 연동</li>
                         <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>Webhook 최대 1개 등록</li>
-                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>팀원 실시간 정보 동시 수신</li>
+                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>팀원 동시 수신</li>
                     </ul>
                 </div>
             </div>
-            <p class="text-gray-500 mt-6 text-sm font-medium bg-gray-100 inline-block px-4 py-2 rounded-lg">※ 각 플랜 결제 및 세팅은 텔레그램 봇의 <code>/subscribe</code> 명령어를 통해 안내받으실 수 있습니다.</p>
+            <p class="text-gray-500 mt-8 text-sm font-medium bg-gray-100 inline-block px-4 py-2 rounded-lg">※ 각 플랜 결제 및 세팅은 텔레그램 봇의 <code>/subscribe</code> 명령어를 통해 안내받으실 수 있습니다.</p>
         </div>
     </main>
 
