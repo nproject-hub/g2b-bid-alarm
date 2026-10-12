@@ -1,463 +1,196 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나라장터 실시간 맞춤 알림 서비스</title>
-  <meta name="description" content="키워드, 분류, 최소 예산, 제외 키워드를 설정하여 원하는 나라장터 입찰공고를 Telegram으로 실시간 받아보세요.">
-  <meta name="keywords" content="나라장터, 입찰공고, 입찰알림, 공공입찰, 나라장터알림, 실시간알림">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조달청 나라장터 실시간 맞춤 알림 봇</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
 </head>
+<body class="bg-gray-50 text-gray-900">
 
-<body class="bg-slate-50 text-slate-900">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-      <a href="#" class="text-lg font-bold tracking-tight">
-        나라장터 실시간 알림
-      </a>
-
-      <a
-        href="https://t.me/g2b_bid_alarm_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700"
-      >
-        무료로 시작하기
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="bg-white">
-    <div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
-      <div class="max-w-3xl">
-        <span class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-700">
-          나라장터 입찰공고 실시간 맞춤 알림
-        </span>
-
-        <h1 class="mt-6 text-4xl font-black leading-tight tracking-tight md:text-6xl">
-          매일 나라장터를<br>
-          검색하지 마세요.
-        </h1>
-
-        <p class="mt-6 text-lg leading-8 text-slate-600 md:text-xl">
-          원하는 조건을 설정하면 조건에 맞는 입찰공고만
-          Telegram으로 실시간 알려드립니다.
-        </p>
-
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="https://t.me/g2b_bid_alarm_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded-xl bg-blue-600 px-6 py-3 text-center font-bold text-white hover:bg-blue-700"
-          >
-            Telegram 봇 바로가기
-          </a>
-
-          <a
-            href="#features"
-            class="rounded-xl border border-slate-300 bg-white px-6 py-3 text-center font-bold text-slate-700 hover:bg-slate-50"
-          >
-            서비스 알아보기
-          </a>
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600 tracking-tight">나라장터 알림 봇</h1>
+            <a href="https://t.me/YOUR_BOT_ID" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium shadow-sm">봇 시작하기</a>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Problem -->
-  <section class="border-y border-slate-200 bg-slate-50">
-    <div class="mx-auto max-w-6xl px-5 py-16">
-      <div class="max-w-2xl">
-        <p class="text-sm font-bold text-blue-600">WHY USE IT?</p>
-        <h2 class="mt-2 text-3xl font-bold">매일 반복되는 입찰공고 검색을 줄여보세요.</h2>
-        <p class="mt-4 leading-7 text-slate-600">
-          관심 분야의 공고를 매번 직접 검색하고 확인하는 대신,
-          필요한 조건을 미리 등록해두고 새로운 공고가 올라오면 알림으로 받아볼 수 있습니다.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-2xl">🔎</div>
-          <h3 class="mt-4 text-lg font-bold">검색 시간 절약</h3>
-          <p class="mt-2 leading-6 text-slate-600">
-            매일 반복적으로 나라장터를 검색하는 시간을 줄일 수 있습니다.
-          </p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <div class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                🚀 B2B 입찰 영업의 필수 솔루션
+            </div>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">입찰 성공의 핵심은 <br class="hidden md:block"/><span class="text-blue-600">압도적인 타이밍</span>입니다</h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">나라장터 공고, 이제 번거롭게 직접 찾지 마세요.<br/>설정한 맞춤 키워드의 신규 공고를 텔레그램으로 가장 먼저 전송해 드립니다.</p>
+            <div class="inline-flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                <a href="https://t.me/YOUR_BOT_ID" target="_blank" class="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0l-3.2 2.01c-.56.38-1.06.56-1.53.54-.52-.02-1.52-.29-2.26-.53-.61-.2-1.09-.31-1.05-.66.02-.18.27-.36.75-.55 2.94-1.28 4.9-2.12 5.87-2.53 2.79-1.16 3.37-1.36 3.75-1.36.08 0 .27.02.39.11.1.08.13.19.14.27-.01.06-.01.12-.02.2z"/></svg>
+                    텔레그램으로 즉시 수신
+                </a>
+            </div>
         </div>
 
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-2xl">🔔</div>
-          <h3 class="mt-4 text-lg font-bold">새 공고 실시간 알림</h3>
-          <p class="mt-2 leading-6 text-slate-600">
-            등록한 조건에 맞는 새로운 공고를 Telegram으로 받아볼 수 있습니다.
-          </p>
+        <!-- 실제 알림 수신 화면 (Telegram) -->
+        <div class="mb-12 flex flex-col md:flex-row items-center justify-center bg-white p-8 rounded-3xl shadow-sm border border-gray-100 max-w-5xl mx-auto">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10 text-left">
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">스마트폰으로 즉시 꽂히는<br><span class="text-blue-600">핵심 입찰 정보</span></h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">복잡한 나라장터 시스템에 로그인할 필요 없습니다. 공고가 뜨는 즉시 <strong>공고명, 예산, 마감일, 직행 링크</strong>를 보기 좋게 요약하여 텔레그램으로 발송합니다.</p>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li class="flex items-center"><span class="mr-2">🎯</span> 설정한 맞춤 키워드(예: '서버 유지보수') 정확히 매칭</li>
+                    <li class="flex items-center"><span class="mr-2">🔗</span> 모바일에서 클릭 한 번으로 공고 원문 바로가기</li>
+                    <li class="flex items-center"><span class="mr-2">⏱</span> 경쟁사보다 한발 앞선 입찰 준비 가능</li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-full max-w-xs rounded-3xl border-8 border-gray-900 overflow-hidden shadow-2xl relative bg-gray-100 aspect-[9/19] flex items-center justify-center">
+                    <img src="telegram-screenshot.jpg" alt="텔레그램 알림 예시 화면" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 p-4 text-center z-[-1]">
+                        <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="text-sm font-medium">telegram-screenshot.jpg</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-2xl">🎯</div>
-          <h3 class="mt-4 text-lg font-bold">불필요한 공고 최소화</h3>
-          <p class="mt-2 leading-6 text-slate-600">
-            키워드, 분류, 최소 예산, 제외 키워드를 조합하여 원하는 공고를 선별할 수 있습니다.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section id="features" class="bg-white">
-    <div class="mx-auto max-w-6xl px-5 py-20">
-      <div class="max-w-2xl">
-        <p class="text-sm font-bold text-blue-600">FEATURES</p>
-        <h2 class="mt-2 text-3xl font-bold">필요한 조건만 간단하게 설정하세요.</h2>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-slate-200 p-7">
-          <h3 class="text-xl font-bold">키워드 검색</h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            관심 있는 사업이나 기술의 키워드를 등록할 수 있습니다.
-          </p>
-          <div class="mt-5 rounded-xl bg-slate-900 p-4 font-mono text-sm text-white">
-            /add 클라우드
-          </div>
+        <!-- NEW: 실제 알림 수신 화면 (Slack - BUSINESS 전용) -->
+        <div class="mb-24 flex flex-col md:flex-row-reverse items-center justify-center bg-indigo-50 p-8 rounded-3xl shadow-sm border border-indigo-100 max-w-5xl mx-auto">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pl-10 text-left">
+                <div class="inline-block bg-indigo-200 text-indigo-800 px-3 py-1 rounded-full text-xs font-bold mb-4">BUSINESS 플랜 전용</div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">우리 팀 슬랙(Slack)으로<br><span class="text-indigo-600">입찰 공고 자동 배달</span></h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">영업팀 단톡방이나 업무용 메신저(Slack, 잔디 등)에 Webhook을 연결해 보세요. 담당자 한 명이 아니라 팀 전체가 동시에 공고를 확인하고 즉각적인 논의를 시작할 수 있습니다.</p>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li class="flex items-center"><span class="mr-2">🤝</span> 정보 누락 제로, 완벽한 팀 투명성 확보</li>
+                    <li class="flex items-center"><span class="mr-2">⚡</span> 알림 수신 즉시 스레드(Thread)에서 업무 분장</li>
+                    <li class="flex items-center"><span class="mr-2">🔌</span> 슬랙 외에도 Webhook을 지원하는 모든 메신저 연동</li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-full max-w-md rounded-xl border-4 border-gray-200 overflow-hidden shadow-xl relative bg-white aspect-video flex items-center justify-center">
+                    <img src="slack-screenshot.png" alt="슬랙 연동 예시 화면" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 p-4 text-center z-[-1] bg-gray-50">
+                        <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="text-sm font-medium">slack-screenshot.png</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="rounded-2xl border border-slate-200 p-7">
-          <h3 class="text-xl font-bold">분류 + 키워드</h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            나라장터 분류와 키워드를 함께 설정하여 검색 범위를 좁힐 수 있습니다.
-          </p>
-          <div class="mt-5 rounded-xl bg-slate-900 p-4 font-mono text-sm text-white">
-            /add_category SW 클라우드
-          </div>
+        <!-- 구체적인 사용 사례 -->
+        <div class="mb-24 bg-blue-50 py-16 rounded-3xl px-8 border border-blue-100">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">어떤 기업에게 확실한 가치를 제공할까요?</h2>
+                <p class="text-gray-600">단순 반복 업무를 없애고 영업 본질에만 집중할 수 있게 만들어 드립니다.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold mb-4">CASE 1. 단순 검색 탈출</div>
+                    <h4 class="font-bold text-xl mb-3 text-gray-900">매일 아침 1시간씩<br>키워드 검색하시나요?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">수십 개의 입찰 키워드를 일일이 검색하고 엑셀로 정리하며 낭비하던 시간을 '0분'으로 단축합니다. 알림이 도착하면 입찰 제안서 분석에만 집중하세요.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold mb-4">CASE 2. 수주 기회 확보</div>
+                    <h4 class="font-bold text-xl mb-3 text-gray-900">주말이나 외근 중에<br>핵심 공고를 놓쳤다면?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">사무실 PC 앞이 아니어도 문제없습니다. 이동 중이거나 다른 업무를 보는 중에도 스마트폰으로 긴급 공고를 즉시 파악하고 발 빠르게 대처할 수 있습니다.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold mb-4">CASE 3. 팀 협업 강화 (BUSINESS)</div>
+                    <h4 class="font-bold text-xl mb-3 text-gray-900">발견한 공고를 팀원들에게<br>일일이 공유하시나요?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">BUSINESS 플랜의 사내 메신저 웹훅(Webhook) 연동을 통해 영업팀, 제안팀 단톡방에 공고를 동시에 쏴줍니다. 정보 지연 없이 즉각적인 의사결정이 가능합니다.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="rounded-2xl border border-slate-200 p-7">
-          <h3 class="text-xl font-bold">최소 예산 설정</h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            일정 금액 이상의 공고만 확인하고 싶을 때 최소 예산을 설정할 수 있습니다.
-          </p>
-          <div class="mt-5 rounded-xl bg-slate-900 p-4 font-mono text-sm text-white">
-            /min 50000000
-          </div>
+        <!-- Pricing Section -->
+        <div class="text-center mb-16" id="pricing">
+            <h2 class="text-3xl font-bold mb-4 text-gray-900">이용 요금 및 플랜</h2>
+            <p class="text-gray-600 mb-10 max-w-2xl mx-auto">단 한 번의 입찰 성공만으로도 수천 배의 ROI(투자수익률)를 가져다줍니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+                <!-- PRO -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 flex flex-col relative overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-100 -mx-8 -mt-8 p-8 mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">PRO</h3>
+                        <p class="text-sm font-semibold text-blue-600 mb-4">💰 인건비 완벽 절감 (개인용)</p>
+                        <p class="text-gray-600 text-sm h-10">월 9,900원(커피 두 잔 값)으로 매월 30시간의 막내 사원 단순 검색 업무를 완전히 자동화하세요.</p>
+                    </div>
+                    <div class="text-4xl font-extrabold text-gray-900 mb-8">9,900원<span class="text-base text-gray-500 font-normal"> /월</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-700 flex-grow text-sm">
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드 최대 5개 등록</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>키워드별 최대 2개 토큰</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>업종 분류 지정</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">✓</span>제외 키워드 사용</li>
+                    </ul>
+                </div>
+                
+                <!-- ULTRA -->
+                <div class="bg-blue-600 rounded-2xl shadow-xl border border-blue-600 p-8 relative transform md:-translate-y-4 flex flex-col text-white">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold tracking-wide shadow-sm w-max">가장 많이 선택하는 플랜</div>
+                    <div class="mt-4 mb-6 border-b border-blue-500 pb-6">
+                        <h3 class="text-2xl font-bold mb-2">ULTRA</h3>
+                        <p class="text-sm font-semibold text-yellow-300 mb-4">🚀 광범위한 모니터링망 구축</p>
+                        <p class="text-blue-100 text-sm h-10">다양한 사업 영역을 가진 중소기업을 위해 15개 핵심 키워드의 빈틈없는 모니터링을 제공합니다.</p>
+                    </div>
+                    <div class="text-4xl font-extrabold mb-8">19,900원<span class="text-base text-blue-200 font-normal"> /월</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow text-sm">
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드 최대 15개 등록</li>
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>키워드별 최대 5개 토큰</li>
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>업종 분류 지정</li>
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">✓</span>제외 키워드 사용</li>
+                    </ul>
+                </div>
+                
+                <!-- BUSINESS -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 flex flex-col relative overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-100 -mx-8 -mt-8 p-8 mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">BUSINESS</h3>
+                        <p class="text-sm font-semibold text-indigo-600 mb-4">🏢 영업팀 파이프라인 자동화</p>
+                        <p class="text-gray-600 text-sm h-10">연간 2,000만 원 상당의 외주 모니터링 인력 대체 효과! 메신저 연동으로 즉각 대응하세요.</p>
+                    </div>
+                    <div class="text-4xl font-extrabold text-gray-900 mb-8">99,900원<span class="text-base text-gray-500 font-normal"> /월</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-700 flex-grow text-sm">
+                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>ULTRA의 모든 기능 포함</li>
+                        <li class="flex items-start"><span class="text-indigo-500 font-bold mr-2">✓</span>사내 슬랙/메신저 연동 지원</li>
+                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>Webhook 최대 1개 등록</li>
+                        <li class="flex items-start"><span class="text-indigo-500 mr-2">✓</span>팀원 실시간 정보 동시 수신</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-gray-500 mt-6 text-sm font-medium bg-gray-100 inline-block px-4 py-2 rounded-lg">※ 각 플랜 결제 및 세팅은 텔레그램 봇의 <code>/subscribe</code> 명령어를 통해 안내받으실 수 있습니다.</p>
         </div>
+    </main>
 
-        <div class="rounded-2xl border border-slate-200 p-7">
-          <h3 class="text-xl font-bold">제외 키워드</h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            관심 없는 공고를 제외 키워드로 필터링할 수 있습니다.
-          </p>
-          <div class="mt-5 rounded-xl bg-slate-900 p-4 font-mono text-sm text-white">
-            /exclude 교육
-          </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-gray-800">
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">서비스 운영 및 환불 규정</h4>
+                    <p class="mb-3 text-sm leading-relaxed">본 서비스는 조달청 공고를 실시간으로 제공하기 위해 구축된 개인 개발자의 독립 서비스입니다.</p>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-500">
+                        <li><strong class="text-gray-300">환불 규정:</strong> 결제일로부터 7일 이내, 알림 수신 이력(서비스 이용)이 없는 경우 전액 환불 가능합니다.</li>
+                        <li>결제 후 7일이 경과하거나 알림을 1회 이상 수신한 경우 해당 월 결제 금액은 환불되지 않으며, 다음 결제일부터 정기 구독이 해지됩니다.</li>
+                        <li>구독 해지는 텔레그램 봇 또는 제공되는 결제 관리 페이지를 통해 직접 진행할 수 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="md:text-right">
+                    <h4 class="text-white text-lg font-bold mb-4">서비스 문의 및 오류 신고</h4>
+                    <div class="inline-block bg-gray-800 rounded-lg p-4 text-left">
+                        <p class="text-sm text-gray-300 mb-1">💬 1:1 고객 지원</p>
+                        <p class="text-sm">텔레그램 봇 내 <code class="bg-gray-700 text-white px-2 py-1 rounded">/question</code> 명령어를 이용해 주세요.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-sm text-gray-600">
+                &copy; 2026 나라장터 실시간 맞춤 알림 봇. All rights reserved.
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Usage -->
-  <section class="bg-slate-50">
-    <div class="mx-auto max-w-6xl px-5 py-20">
-      <div class="max-w-2xl">
-        <p class="text-sm font-bold text-blue-600">HOW TO USE</p>
-        <h2 class="mt-2 text-3xl font-bold">30초면 기본 설정이 가능합니다.</h2>
-        <p class="mt-4 leading-7 text-slate-600">
-          별도의 복잡한 회원가입 없이 Telegram 대화창에서 명령어로 설정할 수 있습니다.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-5 md:grid-cols-4">
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-sm font-bold text-blue-600">STEP 01</div>
-          <h3 class="mt-2 font-bold">봇 시작</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            Telegram에서 봇을 실행합니다.
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-sm font-bold text-blue-600">STEP 02</div>
-          <h3 class="mt-2 font-bold">조건 등록</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            키워드, 분류, 최소 예산 등을 설정합니다.
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-sm font-bold text-blue-600">STEP 03</div>
-          <h3 class="mt-2 font-bold">설정 확인</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            /list 명령어로 현재 설정과 이용 플랜을 확인합니다.
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="text-sm font-bold text-blue-600">STEP 04</div>
-          <h3 class="mt-2 font-bold">공고 확인</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            조건에 맞는 공고가 등록되면 Telegram으로 알림을 받습니다.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-10 rounded-2xl bg-white p-7 shadow-sm">
-        <h3 class="text-xl font-bold">주요 명령어</h3>
-
-        <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/add</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/add_category</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/category</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/min</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/exclude</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/list</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/question</div>
-          <div class="rounded-xl bg-slate-100 p-4 font-mono text-sm">/webhook</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="bg-white">
-    <div class="mx-auto max-w-6xl px-5 py-20">
-      <div class="max-w-2xl">
-        <p class="text-sm font-bold text-blue-600">PRICING</p>
-        <h2 class="mt-2 text-3xl font-bold">필요한 만큼 선택하세요.</h2>
-        <p class="mt-4 leading-7 text-slate-600">
-          무료로 시작하고 필요에 따라 더 많은 조건을 설정할 수 있습니다.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 lg:grid-cols-4">
-
-        <!-- FREE -->
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <h3 class="text-xl font-bold">FREE</h3>
-          <p class="mt-2 text-sm text-slate-500">무료</p>
-
-          <div class="mt-6 text-3xl font-black">0원</div>
-
-          <ul class="mt-6 space-y-3 text-sm text-slate-600">
-            <li>✓ 키워드 최대 1개</li>
-            <li>✓ 키워드당 토큰 최대 1개</li>
-            <li>✓ /add 사용</li>
-            <li>✓ 기존 설정 보관</li>
-            <li>✕ 제외 키워드</li>
-          </ul>
-        </div>
-
-        <!-- PRO -->
-        <div class="rounded-2xl border-2 border-blue-600 bg-blue-50/40 p-6">
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">PRO</h3>
-            <span class="rounded-full bg-blue-600 px-3 py-1 text-xs font-bold text-white">
-              추천
-            </span>
-          </div>
-
-          <p class="mt-2 text-sm text-slate-500">기본적인 실무 활용</p>
-          <div class="mt-6 text-3xl font-black">9,900원<span class="text-base font-medium"> / 월</span></div>
-
-          <ul class="mt-6 space-y-3 text-sm text-slate-600">
-            <li>✓ 키워드 최대 5개</li>
-            <li>✓ 키워드당 토큰 최대 2개</li>
-            <li>✓ 분류 + 키워드 설정</li>
-            <li>✓ 제외 키워드</li>
-            <li>✓ 제외 키워드당 토큰 최대 2개</li>
-          </ul>
-        </div>
-
-        <!-- ULTRA -->
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <h3 class="text-xl font-bold">ULTRA</h3>
-          <p class="mt-2 text-sm text-slate-500">다양한 조건을 사용하는 사용자</p>
-
-          <div class="mt-6 text-3xl font-black">19,900원<span class="text-base font-medium"> / 월</span></div>
-
-          <ul class="mt-6 space-y-3 text-sm text-slate-600">
-            <li>✓ 키워드 최대 15개</li>
-            <li>✓ 키워드당 토큰 최대 5개</li>
-            <li>✓ 분류 + 키워드 설정</li>
-            <li>✓ 제외 키워드</li>
-            <li>✓ 제외 키워드당 토큰 최대 5개</li>
-          </ul>
-        </div>
-
-        <!-- BUSINESS -->
-        <div class="rounded-2xl border border-slate-200 p-6">
-          <h3 class="text-xl font-bold">BUSINESS</h3>
-          <p class="mt-2 text-sm text-slate-500">기업·팀 단위 활용</p>
-
-          <div class="mt-6 text-3xl font-black">99,900원<span class="text-base font-medium"> / 월</span></div>
-
-          <ul class="mt-6 space-y-3 text-sm text-slate-600">
-            <li>✓ ULTRA 전체 기능</li>
-            <li>✓ 키워드/제외 조건 최대 15개</li>
-            <li>✓ 토큰 최대 5개</li>
-            <li>✓ 외부 메신저 Webhook 1개</li>
-            <li>✓ 팀 단위 동시 알림</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Business -->
-  <section class="bg-slate-900 text-white">
-    <div class="mx-auto max-w-6xl px-5 py-20">
-      <div class="max-w-3xl">
-        <p class="text-sm font-bold text-blue-300">BUSINESS</p>
-        <h2 class="mt-2 text-3xl font-bold md:text-4xl">
-          팀 단위로 입찰공고를 공유하세요.
-        </h2>
-        <p class="mt-5 leading-8 text-slate-300">
-          BUSINESS 플랜에서는 Webhook을 이용하여 조건에 맞는 입찰공고를
-          외부 메신저로 전달할 수 있습니다.
-          영업·개발·사업 담당자가 같은 공고를 동시에 확인하고 빠르게 대응할 수 있습니다.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
-        <div class="rounded-2xl bg-white/10 p-6">
-          <h3 class="font-bold">1. Webhook 등록</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-300">
-            /webhook 명령어로 외부 메신저 Webhook URL을 등록합니다.
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white/10 p-6">
-          <h3 class="font-bold">2. 연결 테스트</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-300">
-            /webhook_test 명령어로 연결 상태를 확인합니다.
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white/10 p-6">
-          <h3 class="font-bold">3. 팀 전체 알림</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-300">
-            조건에 맞는 공고가 등록되면 연결된 외부 메신저로 전달됩니다.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="bg-white">
-    <div class="mx-auto max-w-4xl px-5 py-20">
-      <div class="text-center">
-        <p class="text-sm font-bold text-blue-600">FAQ</p>
-        <h2 class="mt-2 text-3xl font-bold">자주 묻는 질문</h2>
-      </div>
-
-      <div class="mt-10 space-y-4">
-
-        <details class="rounded-2xl border border-slate-200 p-5">
-          <summary class="cursor-pointer font-bold">
-            별도의 프로그램을 설치해야 하나요?
-          </summary>
-          <p class="mt-3 leading-7 text-slate-600">
-            별도의 프로그램 설치 없이 Telegram에서 봇을 이용할 수 있습니다.
-          </p>
-        </details>
-
-        <details class="rounded-2xl border border-slate-200 p-5">
-          <summary class="cursor-pointer font-bold">
-            무료로 사용할 수 있나요?
-          </summary>
-          <p class="mt-3 leading-7 text-slate-600">
-            네. FREE 플랜으로 기본적인 키워드 알림을 무료로 이용할 수 있습니다.
-          </p>
-        </details>
-
-        <details class="rounded-2xl border border-slate-200 p-5">
-          <summary class="cursor-pointer font-bold">
-            여러 개의 키워드를 등록할 수 있나요?
-          </summary>
-          <p class="mt-3 leading-7 text-slate-600">
-            이용 플랜에 따라 등록 가능한 키워드 수가 다릅니다.
-            PRO는 최대 5개, ULTRA는 최대 15개까지 등록할 수 있습니다.
-          </p>
-        </details>
-
-        <details class="rounded-2xl border border-slate-200 p-5">
-          <summary class="cursor-pointer font-bold">
-            같은 키워드에 여러 단어를 넣으면 어떻게 되나요?
-          </summary>
-          <p class="mt-3 leading-7 text-slate-600">
-            쉼표로 구분한 여러 토큰은 AND 조건으로 적용됩니다.
-            예를 들어 <code class="rounded bg-slate-100 px-1.5 py-0.5">cloud,aws,시스템</code>은
-            세 조건을 모두 만족하는 공고를 대상으로 합니다.
-          </p>
-        </details>
-
-        <details class="rounded-2xl border border-slate-200 p-5">
-          <summary class="cursor-pointer font-bold">
-            문의는 어떻게 하나요?
-          </summary>
-          <p class="mt-3 leading-7 text-slate-600">
-            Telegram 봇의 <code class="rounded bg-slate-100 px-1.5 py-0.5">/question</code>
-            명령어를 이용해 문의할 수 있습니다.
-          </p>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-blue-600">
-    <div class="mx-auto max-w-4xl px-5 py-20 text-center text-white">
-      <h2 class="text-3xl font-black md:text-4xl">
-        필요한 입찰공고만 받아보세요.
-      </h2>
-      <p class="mx-auto mt-4 max-w-2xl leading-7 text-blue-100">
-        복잡한 회원가입 없이 Telegram에서 바로 시작할 수 있습니다.
-      </p>
-
-      <a
-        href="https://t.me/g2b_bid_alarm_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-8 inline-flex rounded-xl bg-white px-7 py-3 font-bold text-blue-700 hover:bg-blue-50"
-      >
-        Telegram 봇 시작하기
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-950 text-slate-400">
-    <div class="mx-auto max-w-6xl px-5 py-10">
-      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <div class="font-bold text-white">나라장터 실시간 알림</div>
-          <p class="mt-2 text-sm">
-            나라장터 입찰공고 실시간 맞춤 알림 서비스
-          </p>
-        </div>
-
-        <a
-          href="https://t.me/g2b_bid_alarm_bot"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-semibold text-white hover:text-blue-300"
-        >
-          Telegram 봇 바로가기 →
-        </a>
-      </div>
-
-      <div class="mt-8 border-t border-white/10 pt-6 text-xs">
-        © 2026 나라장터 실시간 알림. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
+    </footer>
 </body>
 </html>
